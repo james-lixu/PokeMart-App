@@ -1,0 +1,105 @@
+body {
+  font-family: 'Orbitron', sans-serif;
+  background-color: #112F3B;
+  height: 100vh;
+  width: 100%;
+}
+
+.market-img {
+  background-image: url('./market_bg.png');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: flex-start; 
+  object-fit: fill; 
+  padding-bottom: 20px; 
+  padding-top: 40px;
+}
+
+#card-results {
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 10px; 
+  justify-content: center; 
+  align-items: flex-start; 
+  padding-top: 50px; 
+  max-height: 410px; 
+  overflow-y: auto; 
+}
+
+.card-container.visible {
+  display: block; 
+}
+
+.market-banner-image {
+  max-width: 100%;
+  height: auto; 
+  display: block;
+}
+
+.whole-container{
+  height: 100vh;
+  width: 100vw;
+  flex-direction: column;
+}
+
+.market-container {
+  position: relative;
+  background-size: cover;
+  flex-direction: column;
+  justify-content: flex;
+}
+
+.market-navbar {
+    font-family: Orbitron, sans-serif;
+    background-color: #5a0101!important;
+}
+
+.market-navbar.bg-light .nav-link, .market-navbar.bg-light .market-navbar-brand {
+    color: #fff !important;
+  background-color: #5a0101 !important;
+}
+
+banner-image {
+  width: 100px;
+  height: 20px;
+}
+
+.market-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%; 
+  top: 100%;
+}
+
+.search-bar {
+  display: absolute;
+  position: relative;
+  background-color: rgba(249, 75, 63, 0.8);
+  border-radius: 40px;
+  width: 95%;
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 0 px;
+}
+
+.market-footer {
+    font-family: Orbitron, sans-serif;
+    background-color: #white !important;
+}
+
+.market-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    background-color: white !important;
+    color: #fff;
+}

@@ -1,0 +1,134 @@
+.cart-container {
+  position: relative; 
+}
+
+.cart-modal {
+  position: absolute;
+  top: 100%; 
+  right: 0;  
+  width: 25rem;
+  max-height: 30rem;
+  background-color: #202E50;
+  color: #fff;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  border-radius: 0.5rem;
+  padding: 0.7rem;
+  z-index: 1000;
+  overflow-y: auto; 
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-items-list {
+  list-style-type: none;
+  margin-bottom: 1rem;
+  width: 100%;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0.5rem;
+  text-align: left;
+  width: 100%;
+}
+
+.cart-item:not(:last-child) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cart-item-image {
+  width: 4rem !important;
+  height: 5.5rem;
+  margin-right: 1rem;
+  object-fit: cover; 
+  border-radius: 0.25rem;
+}
+
+.cart-item-details {
+  flex-grow: 1;
+}
+
+.cart-item-name {
+  font-weight: bold;
+}
+
+.cart-item-price {
+  font-size: 0.875rem;
+}
+
+.cart-item-quantity {
+  font-size: 0.875rem;
+  margin-bottom: 15px;
+}
+
+.cart-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.checkout-button, .close-cart-button {
+  background-color: #D7D4DD;
+  color: #202D51;
+  padding: 0.3rem;
+  border: none;
+  border-radius: 0.25rem;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.checkout-button:hover, .close-cart-button:hover {
+  background-color: #CCC;
+}
+
+.empty-cart-message {
+  text-align: center;
+  padding: 2rem;
+  font-style: italic;
+}
+
+.cart-items-list::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+.cart-items-list::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 0.25rem;
+}
+
+.remove-item-button {
+  margin-right: 1rem;
+  padding: 0.25rem 0.5rem;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.quantity-input {
+  width: 3rem;
+  padding: 0.25rem;
+  margin-left: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+}
+
+.cart-item-actions {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 600px) {
+  .cart-modal {
+    width: 100%;
+    right: auto;
+  }
+}

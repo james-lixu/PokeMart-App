@@ -1,0 +1,143 @@
+body {
+  font-family: 'Orbitron', sans-serif;
+  background-color: #112F3B;
+  height: 100vh;
+  width: 100wh;
+}
+
+.dashboard-container {
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-img {
+  position: relative;
+  background-image: url('./homepage_background.jpg');
+  background-size: cover;
+  background-position: center;
+  width: 100wh;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 100px; 
+}
+
+.dashboard-img::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5); 
+  z-index: 1;
+}
+
+.dashboard-img * {
+  position: relative;
+  z-index: 2;
+}
+
+.button-container {
+  text-align: center;
+}
+
+.button-container a {
+  display: inline-block;
+  text-decoration: none;
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  margin: 5px;
+}
+
+.content {
+  padding-top: 20px;
+}
+
+.dashboard-navbar {
+  font-family: Orbitron, sans-serif;
+  background-color: #0A2632 !important;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  width: 101% !important;
+}
+
+.dashboard-navbar.bg-light .nav-link, .dashboard-navbar.bg-light .dashboard-navbar-brand {
+  color: #fff !important;
+  background-color: #0A2632 !important;
+  width: 101% !important;
+}
+
+
+hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.dashboard-container .button-container .hero-button {
+  text-decoration: none;
+  background-color: #FFCB05; 
+  color: #003A70; 
+  padding: 15px 30px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.dashboard-container .button-container .hero-button:hover {
+  background-color: #E0A800; 
+  cursor: pointer;
+}
+
+
+.text-content h1 {
+  color: #003A70;
+  margin-bottom: 25px;
+  text-shadow:
+    -1px -1px 0 #FFCB05,  
+     1px -1px 0 #FFCB05,
+    -1px 1px 0 #FFCB05,
+     1px 1px 0 #FFCB05;
+}
+
+
+.hero-button:hover {
+  background-color: #E0A800; 
+  cursor: pointer;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  padding: 20px; 
+  gap: 10px; 
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: space-around; 
+  padding: 20px;
+  height: 100%;
+}
+
+.profile-card-image{
+  width: 100wh;
+}
+

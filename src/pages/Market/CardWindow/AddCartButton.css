@@ -1,0 +1,17 @@
+.card-purchase-button {
+  background-color: green; /* Background color of the button */
+  color: white; /* Text color */
+  border: none; /* Removes the default border */
+  padding: 10px 20px; /* Adds padding inside the button */
+  text-align: center; /* Aligns the text to the center */
+  text-decoration: none; /* Removes underline from text */
+  display: inline-block; /* Makes it an inline block element */
+  font-size: 16px; /* Sets the font size */
+  margin: 10px 6px; /* Adds margin around the button */
+  cursor: pointer; /* Changes cursor to a pointer on hover */
+  border-radius: 8px; /* Makes the corners rounded */
+}
+
+.card-purchase-button:hover {
+  background-color: #005f00; /* Darker shade of green for hover effect */
+}

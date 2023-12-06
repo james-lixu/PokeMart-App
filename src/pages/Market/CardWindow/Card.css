@@ -1,0 +1,30 @@
+.card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  background-color: #e3e4df;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.card h3 {
+  margin: 10px 0;
+  font-size: 1.2em;
+}
+
+.card p {
+  font-size: 1em;
+  color: #333;
+}

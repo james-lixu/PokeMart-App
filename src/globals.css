@@ -1,0 +1,10 @@
+main {
+  text-align: center;
+  vertical-align: center;
+  line-height: 100%
+  color: white;
+}
+body {
+  overflow-x: hidden; 
+  background-color: #101012;
+}

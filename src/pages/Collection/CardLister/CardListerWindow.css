@@ -1,0 +1,8 @@
+#card-results {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  gap: 20px; /* Adjust as needed */
+}
