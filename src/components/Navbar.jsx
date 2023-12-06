@@ -64,16 +64,17 @@ const Navbar = ({ className }) => {
           ) : (
             <>
               <li className="nav-item">
+                <button onClick={toggleCart} className="nav-link navbar-cart-button">
+                  <img src={ShoppingCartIcon} alt="Shopping Cart" className="navbar-shopping-cart" />
+                </button>
+              </li>
+              <li className="nav-item">
                 <Link className="nav-link" to="/login">Login</Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/register">Sign Up</Link>
               </li>
-              <li className="nav-item">
-                <button onClick={toggleCart} className="nav-link navbar-cart-button">
-                  <img src={ShoppingCartIcon} alt="Shopping Cart" className="navbar-shopping-cart" />
-                </button>
-              </li>
+
             </>
           )}
         </ul>

@@ -1,105 +1,123 @@
 body {
   font-family: 'Orbitron', sans-serif;
   background-color: #112F3B;
-  height: 100vh;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  overflow-y: hidden;
+}
+
+.market-navbar {
+  position: fixed;
+  top: 0;
   width: 100%;
+  z-index: 100;
+  font-family: 'Orbitron', sans-serif;
+  background-color: #5a0101 !important;
 }
 
-.market-img {
-  background-image: url('./market_bg.png');
-  background-size: cover;
-  background-position: center;
+.market-navbar.bg-light .nav-link, .market-navbar.bg-light .market-navbar-brand {
+  color: #fff !important;
+  background-color: #5a0101 !important;
+}
+
+.whole-container {
+  padding-top: 150px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.market-layout {
+  display: flex;
+  top: 10%;
+  width: 100vw; /* Corrected from 100wh to 100vw */
   height: 100vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column; 
-  align-items: center; 
-  justify-content: flex-start; 
-  object-fit: fill; 
-  padding-bottom: 20px; 
-  padding-top: 40px;
+  flex-grow: 1;
 }
 
-#card-results {
+.left-sidebar {
+  position: fixed;
+  top: 10%;
+  left: 0;
+  background-color: rgba(249, 75, 63, 0.8);
+  padding: 20px;
+  width: 420px;
+  height: 100vh;
   display: flex;
-  flex-wrap: wrap; 
-  gap: 10px; 
-  justify-content: center; 
-  align-items: flex-start; 
-  padding-top: 50px; 
-  max-height: 410px; 
-  overflow-y: auto; 
-}
-
-.card-container.visible {
-  display: block; 
+  flex-direction: column;
+  align-items: center;
 }
 
 .market-banner-image {
   max-width: 100%;
-  height: auto; 
-  display: block;
+  height: auto;
+  margin-bottom: 20px;
 }
 
-.whole-container{
-  height: 100vh;
-  width: 100vw;
-  flex-direction: column;
-}
-
-.market-container {
-  position: relative;
-  background-size: cover;
-  flex-direction: column;
-  justify-content: flex;
-}
-
-.market-navbar {
-    font-family: Orbitron, sans-serif;
-    background-color: #5a0101!important;
-}
-
-.market-navbar.bg-light .nav-link, .market-navbar.bg-light .market-navbar-brand {
-    color: #fff !important;
-  background-color: #5a0101 !important;
-}
-
-banner-image {
-  width: 100px;
-  height: 20px;
-}
-
-.market-content {
-  display: flex;
-  flex-direction: column;
+.card-window-container {
+  flex-grow: 1;
+  padding: 20px;
+  margin-left: 400px;
+  top: 10%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  height: 90vh;
   align-items: center;
-  width: 100%; 
-  top: 100%;
+  justify-content: center;
+}
+
+.market-footer {
+  font-family: 'Orbitron', sans-serif;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  color: #000;
+  width: 100%;
 }
 
 .search-bar {
-  display: absolute;
-  position: relative;
-  background-color: rgba(249, 75, 63, 0.8);
-  border-radius: 40px;
-  width: 95%;
-  padding: 10px;
-  align-items: center;
+  width: 100%;
+}
+
+.pagination {
+  display: flex;
   justify-content: center;
-  flex-direction: column;
-  margin-top: 0 px;
+  margin-top: 5px;
+  font-family: 'Orbitron', sans-serif;
 }
 
-.market-footer {
-    font-family: Orbitron, sans-serif;
-    background-color: #white !important;
+.page-button {
+  background-color: #5a0101;
+  color: white;
+  border: none;
+  padding: 5px 15px;
+  margin: 0 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.85em;
+  font-family: 'Orbitron', sans-serif; 
+  transition: background-color 0.3s, box-shadow 0.3s; 
 }
 
-.market-footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100px;
-    background-color: white !important;
-    color: #fff;
+.page-button:hover {
+  background-color: #7a2b2b;
+}
+
+.page-button:focus {
+  outline: none;
+  box-shadow: 0 0 10px 3px rgba(90, 1, 1, 0.7); 
+}
+
+.card-window-container .card {
+  height: 345px; 
+  width: calc((100% - 60px) / 4); 
+  margin: 10px; 
+  display: inline-block;
+  
 }

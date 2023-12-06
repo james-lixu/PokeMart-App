@@ -1,34 +1,33 @@
 .modal {
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  position: fixed; 
+  z-index: 1; 
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4); 
 }
-/* New class to make the modal visible */
+
 .modal-visible {
-  display: block; /* Show the modal */
+  display: block; 
 }
 
 .modal-content {
-  position: fixed; /* Fixed position */
-  top: 50%; /* Position the top edge of the element at the middle of the screen */
-  left: 50%; /* Position the left edge of the element at the middle of the screen */
-  transform: translate(-50%, -50%); /* Shift the element left and up by half its width and height */
-
-  z-index: 2; /* Higher than .modal */
-  margin: auto; /* Auto margin for automatic spacing */
+  position: fixed; 
+  top: 55%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  z-index: 2;
+  margin: auto;
   padding: 20px;
   border: 1px solid #888;
   background-color: #fefefe;
-  /* border: 2px solid red; /* For visibility during debugging, can be removed later */
-  background-color: lightblue; /* For visibility during debugging, can be removed later */ */
-  width: 80%; /* Responsive width */
-  max-width: 800px; /* Maximum width */
+  background-color: #101012; 
+  width: 80%; 
+  height: auto;
+  max-width: 800px; 
 }
 
 
@@ -87,8 +86,8 @@
 }
 
 .column {
-  flex-basis: 45%; /* Slightly less than half to account for margin */
-  min-width: 250px; /* Minimum width for each column */
+  flex-basis: 45%; 
+  min-width: 250px; 
 }
 
 @media screen and (max-width: 600px) {

@@ -8,38 +8,53 @@ import bannerImage from './pokemartlogo.png';
 
 const Market = () => {
   const [cards, setCards] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6; // Set to 6 cards per page
 
   const handleSearch = (searchResults) => {
     setCards(searchResults);
+    setCurrentPage(1); // Reset to first page on new search
   };
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = cards.slice(indexOfFirstItem, indexOfLastItem);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
-    <div className="whole-container">
-      <Navbar className="market-navbar" />
-      <div className="market-container">
+    <>
+      <div className="whole-container">
+        <Navbar className="market-navbar" />
 
-        <div className="market-img">
-          <div className="market-content">
-            <div className="search-bar">
-              <img
-                src={bannerImage}
-                alt="Market Image"
-                className="market-banner-image"
-                style={{ width: '450px', height: '300px' }}
-              />
-              <h1>Start Trading Cards!</h1>
-              <SearchBar onSearch={handleSearch} />
+        <div className="market-layout">
+          <div className="left-sidebar">
+            <img src={bannerImage} alt="Market Logo" className="market-banner-image" />
+            <h1>Start Trading Cards!</h1>
+            <SearchBar onSearch={handleSearch} />
+          </div>
 
-            </div>
-            <div card-container>
-              <CardWindow cards={cards} />
+          <div className="card-window-container">
+            <CardWindow cards={currentItems} />
+            <div className="pagination">
+              {[...Array(Math.ceil(cards.length / itemsPerPage)).keys()].map(number => (
+                <button
+                  key={number + 1}
+                  className={`page-button ${currentPage === number + 1 ? 'active' : ''}`}
+                  onClick={() => paginate(number + 1)}
+                  onFocus={(event) => event.target.classList.add('focus-glow')}
+                  onBlur={(event) => event.target.classList.remove('focus-glow')}
+                >
+                  {number + 1}
+                </button>
+              ))}
             </div>
           </div>
         </div>
-        <Footer className="market-footer" />
       </div>
-    </div>
+
+    </>
   );
 };
 
 export default Market;
-

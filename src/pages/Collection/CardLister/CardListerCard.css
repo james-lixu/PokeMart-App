@@ -1,11 +1,13 @@
 .card {
-  border: 1px solid #ddd;
+  border: 1px solid black;
   border-radius: 8px;
-  padding: 10px;
-  margin: 10px;
+  padding: 15px;
+  margin: 5px;
   text-align: center;
+  justify-content: center;
   cursor: pointer;
   transition: transform 0.3s ease;
+  background-color: #05122d;
 }
 
 .card:hover {
@@ -14,16 +16,19 @@
 
 .card img {
   max-width: 100%;
-  height: auto;
+  height: 70%; /* Adjusts to maintain aspect ratio */
+  justify-content: center;
+  align-content: center;
   border-radius: 4px;
 }
 
 .card h3 {
   margin: 10px 0;
   font-size: 1.2em;
+  color: whitesmoke;
 }
 
 .card p {
   font-size: 1em;
-  color: #333;
+  color: whitesmoke;
 }
