@@ -9,20 +9,21 @@
   padding: 20px;
 }
 
-.contact-container h1 {
+.team-member-container h2 {
   margin-top: -15px;
   margin-bottom: 15px;
-  color: white;
+  color: black;
 }
 
-.contact-container p {
+.team-member-container p {
   margin-bottom: 65px;
-  color: #B0B7C0;
+  color: black;
 }
 
 .team-member-container {
   display: flex;
   justify-content: space-around;
+  align-content: center;
   flex-wrap: wrap;
   gap: 20px;
 }
@@ -34,12 +35,16 @@
   background: #fff;
   text-align: center;
   background-color: white;
+  justify-content:center;
 }
 /* #B0B7C0 */
 .team-member-card img {
-  width: 100%;
-  height: auto;
-  border-radius: 5px; /* Optional: if you want rounded corners on images */
+  object-fit: fill;
+  width: 236px;
+  height: 260px;
+  border-radius: 5px; 
+  padding: 10px;
+  justify-content:center;
 }
 
 .team-member-card h2 {

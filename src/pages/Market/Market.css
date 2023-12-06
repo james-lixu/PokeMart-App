@@ -32,7 +32,7 @@ body {
 .market-layout {
   display: flex;
   top: 10%;
-  width: 100vw; /* Corrected from 100wh to 100vw */
+  width: 100vw;
   height: 100vh;
   flex-grow: 1;
 }

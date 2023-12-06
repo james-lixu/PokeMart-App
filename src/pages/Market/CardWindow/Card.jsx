@@ -8,7 +8,7 @@ const Card = ({ card, onCardClick }) => {
       <img src={card.small_image_url} alt={`Card ${card.name}`} />
       <h3>{card.name}</h3>
       <h3>#{card.national_pokedex_numbers}</h3>
-      <p>Market Price: {card.price}</p>
+      <p>Market Price: {card.price ? `$${card.price}` : 'N/A'}</p>
     </li>
   );
 };

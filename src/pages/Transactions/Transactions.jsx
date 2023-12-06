@@ -10,19 +10,14 @@ const Transactions = () => {
   const [quantities, setQuantities] = useState({});
 
   useEffect(() => {
-    const initialQuantities = {};
-    cartItems.forEach(item => {
-      initialQuantities[item.listing_id] = quantities[item.listing_id] || item.quantity;
-    });
-    setQuantities(initialQuantities);
-  }, [cartItems, quantities]);
+    setQuantities(cartItems.reduce((acc, item) => ({
+      ...acc,
+      [item.listing_id]: item.quantity,
+    }), {}));
+  }, [cartItems]);
 
   useEffect(() => {
-    const newTotal = cartItems.reduce((total, item) => {
-      const quantity = quantities[item.listing_id] || item.quantity;
-      return total + (item.price * quantity);
-    }, 0);
-    setTotalPrice(newTotal);
+    setTotalPrice(cartItems.reduce((total, item) => total + (item.price * (quantities[item.listing_id] || item.quantity)), 0));
   }, [cartItems, quantities]);
 
   const handleQuantityChange = (listingId, newQuantity) => {
@@ -33,10 +28,15 @@ const Transactions = () => {
     removeFromCart(cardId);
   };
 
+  const handlePurchase = () => {
+    console.log('Purchase clicked, process the transaction');
+    // Implement purchase functionality
+  };
+
   return (
     <div className="whole-page">
+      <Navbar className="transaction-navbar" />
       <div className="transaction-container">
-        <Navbar className="transaction-navbar" />
         <div className="transaction-content">
           <h1 className="cart-header">Your Cart</h1>
           {cartItems.length > 0 ? (
@@ -57,11 +57,9 @@ const Transactions = () => {
                       />
                     </div>
                     <p className="cart-item-price">${item.price.toFixed(2)}</p>
-                    <div className="cart-item-actions">
-                      <button onClick={() => handleRemoveClick(item.card_id)} className="remove-item-button">
-                        Remove
-                      </button>
-                    </div>
+                    <button onClick={() => handleRemoveClick(item.card_id)} className="remove-item-button">
+                      Remove
+                    </button>
                   </div>
                 </li>
               ))}
@@ -72,11 +70,14 @@ const Transactions = () => {
           <div className="cart-total">
             Total Price: ${totalPrice.toFixed(2)}
           </div>
+          <button onClick={handlePurchase} className="purchase-button">
+            Purchase
+          </button>
         </div>
       </div>
       <Footer className="market-footer" />
     </div>
   );
-}
+};
 
 export default Transactions;

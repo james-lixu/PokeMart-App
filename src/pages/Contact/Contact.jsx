@@ -1,7 +1,10 @@
 import React from 'react';
 import Navbar from '../../components/Navbar';
 import './Contact.css';
-import testImage from './test.jpg';
+import testImage from './photos/test2.png';
+import testImage2 from './photos/test.jpg';
+import testImage3 from './photos/test4.jpg';
+import testImage4 from './photos/huh.jpg';
 
 const teamMembers = [
   {
@@ -14,19 +17,19 @@ const teamMembers = [
     name: 'Michael Rivera',
     position: '---',
     location: '---',
-    imageUrl: testImage
+    imageUrl: testImage2
   },
   {
     name: 'Jhon Guzman',
     position: '---',
     location: '---',
-    imageUrl: testImage
+    imageUrl: testImage3
   },
   {
     name: 'Ivan Chen',
     position: '',
     location: '---',
-    imageUrl: testImage
+    imageUrl: testImage4
   }
 ];
 

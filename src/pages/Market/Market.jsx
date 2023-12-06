@@ -9,11 +9,11 @@ import bannerImage from './pokemartlogo.png';
 const Market = () => {
   const [cards, setCards] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6; // Set to 6 cards per page
+  const itemsPerPage = 6;
 
   const handleSearch = (searchResults) => {
     setCards(searchResults);
-    setCurrentPage(1); // Reset to first page on new search
+    setCurrentPage(1);
   };
 
   const indexOfLastItem = currentPage * itemsPerPage;
