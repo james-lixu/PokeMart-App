@@ -1,0 +1,99 @@
+.login-modal {
+  background-color: rgba(32, 45, 81, 0.7);
+  padding: 20px;
+  border-radius: 10px;
+  width: 250px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+.close-login-modal {
+  cursor: pointer;
+  background-color: #D7D4DD;
+  color: #202D51;
+  margin-top: 7px;
+  padding: 0.3rem;
+  border: none;
+  border-radius: 0.25rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.close-login-modal:hover {
+  background-color: #CCC; 
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); 
+  transform: translateY(-2px);
+}
+
+.login-modal-logo {
+  width: 150px; 
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.login-modal-input {
+  font-family: Orbitron, sans-serif;
+  display: block;
+  width: 100%;
+  padding: 8px; 
+  margin: 5px 0; 
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.login-modal-button {
+  font-family: Orbitron, sans-serif;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #f03c3c;
+  color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+}
+
+.login-modal-button:hover {
+  background-color: #d82b2b;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
+  transform: translateY(-2px);
+}
+
+.login-modal-error {
+  color: #ff0033; 
+  background-color: #ffe5e5; 
+  border: 1px solid #ff0033;
+  border-radius: 8px;
+  padding: 8px; 
+  margin: 5px 0;
+  text-align: center;
+  animation: shake 0.5s; 
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25%, 75% { transform: translateX(-5px); } 
+  50% { transform: translateX(5px); }
+}
+
+.login-modal-register {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 0.7em;
+}
+
+.login-modal-register-link {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 1em;
+}

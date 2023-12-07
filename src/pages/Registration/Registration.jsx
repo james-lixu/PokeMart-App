@@ -1,7 +1,6 @@
-// Registration.jsx
 import React, { useState } from 'react';
-import './Registration.css';
 import { useNavigate, Link } from 'react-router-dom';
+import './Registration.css';
 import pokemartLogo from '../../assets/images/pokemartlogo.png';
 
 function Registration() {
@@ -9,13 +8,19 @@ function Registration() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [retypePassword, setRetypePassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   async function handleSubmit(event) {
     event.preventDefault();
-    // Here you would handle the registration logic,
-    const registerApiEndpoint = 'https://pokemonappbackend.michaelrivera15.repl.co/auth/register';
+    setError(''); 
 
+    if (password !== retypePassword) {
+      setError("Passwords do not match.");
+      return;
+    }
+
+    const registerApiEndpoint = 'https://pokemonappbackend.michaelrivera15.repl.co/auth/register';
     try {
       const response = await fetch(registerApiEndpoint, {
         method: 'POST',
@@ -24,27 +29,25 @@ function Registration() {
       });
 
       if (response.ok) {
-        // Navigate to the login page
-        navigate('/');
+        navigate('/login');
       } else {
-        console.error('Register failed');
-        // Optionally, handle and display login error to the user
+        const errorData = await response.json();
+        setError(errorData.msg || 'Registration failed');
       }
     } catch (error) {
       console.error('Error during registration:', error);
-      // Optionally, handle and display error
+      setError(error.message);
     }
-    console.log(username, email, password, retypePassword);
   };
 
   return (
     <div className="registration-page-container">
       <div className="registration-container">
-        <a href="/about">
+        <Link to="/about">
           <img src={pokemartLogo} alt="PokéMart Logo" className="login-logo" />
-        </a>
+        </Link>
         <h2>Sign up and show off all your best cards!</h2>
-        <div></div> {/*You can put response output here*/}
+        {error && <div className="registration-error">{error}</div>}
         <form onSubmit={handleSubmit}>
           <input
             type="text"
@@ -80,7 +83,7 @@ function Registration() {
           />
           <button type="submit" className="registration-button">REGISTER</button>
         </form>
-        <p>Already have an account? <a href="/login">Click here to login.</a></p>
+        <p>Already have an account? <Link to="/login">Click here to login.</Link></p>
       </div>
     </div>
   );

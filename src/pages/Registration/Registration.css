@@ -52,17 +52,38 @@ body {
 }
 
 .registration-button {
-    font-family: 'Orbitron', sans-serif;
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #f03c3c;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  font-family: Orbitron, sans-serif;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #f03c3c;
+  color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
 }
 
 .registration-button:hover {
-    background-color: #d82b2b;
+  background-color: #d82b2b;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
+  transform: translateY(-2px);
+}
+
+.registration-error {
+  color: #ff0033; 
+  background-color: #ffe5e5; 
+  border: 1px solid #ff0033;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 10px 0;
+  text-align: center;
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25%, 75% { transform: translateX(-10px); }
+  50% { transform: translateX(10px); }
 }

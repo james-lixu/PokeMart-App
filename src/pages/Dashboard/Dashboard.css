@@ -68,7 +68,7 @@ body {
   position: fixed;
   top: 0;
   z-index: 10;
-  width: 101% !important;
+  width: 100% !important;
 }
 
 .dashboard-navbar.bg-light .nav-link, .dashboard-navbar.bg-light .dashboard-navbar-brand {

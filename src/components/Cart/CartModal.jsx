@@ -1,21 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useCart } from './CartContext';
-import './CartModal.css'
+import { useAuth } from '../../AuthContext';
+import LoginModal from '../LoginModal';
+import './CartModal.css';
 
 const CartModal = ({ onClose }) => {
-  const { cartItems, removeFromCart, setIsCartModalOpen } = useCart();
+  const { cartItems, removeFromCart } = useCart();
+  const { isLoggedIn } = useAuth();
   const [totalPrice, setTotalPrice] = useState(0);
   const [quantities, setQuantities] = useState({});
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    console.log('Current cart items:', cartItems);
     const initialQuantities = {};
     cartItems.forEach(item => {
       initialQuantities[item.listing_id] = quantities[item.listing_id] || 1;
     });
     setQuantities(initialQuantities);
-  }, [cartItems]);
+  }, [cartItems, quantities]);
 
   useEffect(() => {
     // Recalculate total price
@@ -34,6 +38,14 @@ const CartModal = ({ onClose }) => {
     removeFromCart(cardId);
   };
 
+  const handleCheckout = () => {
+    if (isLoggedIn) {
+      navigate('/checkout');
+    } else {
+      setShowLoginModal(true);
+    }
+  };
+
   return (
     <div className="cart-modal">
       {cartItems.length > 0 ? (
@@ -43,7 +55,6 @@ const CartModal = ({ onClose }) => {
               <img src={item.image_url} alt={`Card ${item.card_id}`} className="cart-item-image" />
               <div className="cart-item-details">
                 <p className="cart-item-name">{`Card ${item.card_id}`}</p>
-
                 <div className="cart-item-quantity">
                   Qty:
                   <input
@@ -55,11 +66,9 @@ const CartModal = ({ onClose }) => {
                   />
                 </div>
                 <p className="cart-item-price">${item.price.toFixed(2)}</p>
-                <div className="cart-item-actions">
-                  <button onClick={() => handleRemoveClick(item.card_id)} className="remove-item-button">
-                    Remove
-                  </button>
-                </div>
+                <button onClick={() => handleRemoveClick(item.card_id)} className="remove-item-button">
+                  Remove
+                </button>
               </div>
             </li>
           ))}
@@ -71,14 +80,14 @@ const CartModal = ({ onClose }) => {
         Total Price: ${totalPrice.toFixed(2)}
       </div>
       <div className="cart-actions">
-        <Link to="/checkout">
-          <button className="checkout-button">
-            Continue to Checkout
-          </button></Link>
+        <button onClick={handleCheckout} className="checkout-button">
+          Continue to Checkout
+        </button>
         <button onClick={onClose} className="close-cart-button">
           X
         </button>
       </div>
+      {showLoginModal && <LoginModal onClose={() => setShowLoginModal(false)} />}
     </div>
   );
 };

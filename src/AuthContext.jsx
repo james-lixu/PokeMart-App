@@ -5,11 +5,8 @@ const AuthContext = createContext();
 export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(
-    localStorage.getItem('isLoggedIn') === 'true' // Retrieve the logged-in state from local storage
-  );
+  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('isLoggedIn') === 'true');
 
-  // Login method
   const login = async (username, password) => {
     const loginApiEndpoint = 'https://pokemonappbackend.michaelrivera15.repl.co/auth/login';
     try {
@@ -22,24 +19,42 @@ export const AuthProvider = ({ children }) => {
 
       if (response.ok) {
         setIsLoggedIn(true);
-        localStorage.setItem('isLoggedIn', 'true'); // Save the logged-in state to local storage
+        localStorage.setItem('isLoggedIn', 'true');
       } else {
-        throw new Error('Login failed');
+        const errorData = await response.json();
+        throw new Error(errorData.msg || 'Login failed');
       }
     } catch (error) {
       console.error('Error during login:', error);
       setIsLoggedIn(false);
-      localStorage.setItem('isLoggedIn', 'false'); // Ensure the logged-in state is set to false in local storage
+      localStorage.setItem('isLoggedIn', 'false');
+      throw error;
     }
   };
 
-  // Logout method
-  const logout = () => {
+  const logout = async () => {
+    const logoutApiEndpoint = 'https://pokemonappbackend.michaelrivera15.repl.co/auth/logout';
+    try {
+      const response = await fetch(logoutApiEndpoint, {
+        method: 'POST',
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
+      });
+
+      if (response.ok) {
+        console.log("Logged out successfully.");
+      } else {
+        console.error("Failed to log out.");
+      }
+    } catch (error) {
+      console.error("Error during logout:", error);
+    }
     setIsLoggedIn(false);
-    localStorage.setItem('isLoggedIn', 'false'); // Clear the logged-in state from local storage
+    localStorage.setItem('isLoggedIn', 'false');
+    window.location.reload()
   };
 
-  // Check the user's authentication status when the app loads
+
   useEffect(() => {
     const checkLoginStatus = async () => {
       const loggedIn = localStorage.getItem('isLoggedIn') === 'true';
