@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '../../components/Navbar';
-import './Collection.css';
 import Footer from '../../components/Footer';
+import './Collection.css';
 import CardListerWindow from './CardLister/CardListerWindow';
-import CardDetails from './CardLister/CardDetails';
-import ProfileCard from '../../components/ProfileCard';
+import SellingCardWindow from './CardLister/SellingCardWindow';
+import CardListerModal from './CardLister/CardListerModal';
+import ProfIcon from '../../assets/images/poke_profile.png';
+
 
 function Collection() {
   const [userCollection, setUserCollection] = useState([]);
   const [selectedCard, setSelectedCard] = useState(null);
   const [newCardId, setNewCardId] = useState('');
+  const [displayType, setDisplayType] = useState('collection'); // 'collection' or 'forSale'
+  const [sellingCards, setSellingCards] = useState([]);
 
   const fetchUserCollection = async () => {
     try {
@@ -28,14 +32,47 @@ function Collection() {
     }
   };
 
+  const fetchCardsBeingSold = async () => {
+    try {
+      const response = await fetch(`https://pokemonappbackend.michaelrivera15.repl.co/collection/view_selling`, {
+        method: 'GET',
+        credentials: 'include',
+        mode: 'cors',
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Error fetching cards being sold: ', error);
+      return [];
+    }
+  };
+
   useEffect(() => {
-    fetchUserCollection();
-  }, []); // The empty dependency array ensures this effect runs once when the component mounts
+    fetchUserCollection(); // Fetch user's collection when the component mounts
+
+    if (displayType === 'forSale') {
+      fetchCardsBeingSold().then((sellingCardsData) => {
+        // Handle the selling cards data, you might want to set it in state
+        setSellingCards(sellingCardsData);
+      });
+    }
+  }, [displayType]);
 
   const handleCardClick = (card) => {
     setSelectedCard(card);
   };
 
+  const handleDisplayTypeChange = (type) => {
+    setDisplayType(type);
+  };
+
+  const totalValue = userCollection.data && userCollection.data.length > 0
+    ? userCollection.data.reduce((acc, card) => acc + (card.price || 0), 0)
+    : 0;
+  const numberOfCards = userCollection.data ? userCollection.data.length : 0;
 
   const handleAddCardSubmit = async (event) => {
     event.preventDefault();
@@ -55,49 +92,79 @@ function Collection() {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       setNewCardId('');
+      fetchUserCollection();
     } catch (error) {
       console.error('Error adding card: ', error);
     }
   };
-
+  
 
   return (
     <div className="collection-container">
       <Navbar className="collection-navbar" />
 
-      <div className="user-img left">
-        <img src='./poke_profile.PNG' />
-        <div className="user-info">
-          <ul>
-            <li><img className="user-pfp" src="poke_profile.PNG" alt="User" height="150px" /></li>
-            <li>Name: {userCollection.user && userCollection.user.username}</li>
-            <li>Email: {userCollection.user && userCollection.user.email}</li>
-            <li>Phone: {userCollection.user && userCollection.user.phone}</li>
-          </ul>
+      <div className='collection-content'>
+        <div className="tab-group">
+          {/* Buttons to switch between "My Collection" and "Cards Being Sold" */}
+          <button onClick={() => handleDisplayTypeChange('collection')}>My Collection</button>
+          <img src={ProfIcon} alt="Collection Profile"/>
+          <button onClick={() => handleDisplayTypeChange('forSale')}>My Cards For Sale</button>
         </div>
-      </div>
-
-      <div className="user-cardinfo right">
-        <div className="">
-          <CardListerWindow cards={userCollection} onCardClick={handleCardClick} />
+        
+        {/* Display section based on the selected tab */}
+        <div>
+          
+          {displayType === 'collection' ? (
+            <div className='collection-header'>
+              <div>
+                <h3>Collection Value: ${totalValue.toFixed(2)}</h3>
+              </div>
+              <div>
+                <h1>Card Collection</h1>
+              </div>
+              <div>
+                <h3># of Cards: {numberOfCards}</h3>
+              </div>
+            
+          {/*Move add-card-to-collection to where user buys card from market*/}
+              {/* <div className="add-card-form">
+                <form onSubmit={handleAddCardSubmit}>
+                  <label>
+                    <input
+                      placeholder='Enter Card ID'
+                      type="text"
+                      value={newCardId}
+                      onChange={(e) => setNewCardId(e.target.value)}
+                    />
+                  </label>
+                  <button type="submit">Add Card</button>
+                </form>
+              </div> */}
+            </div>
+          ) : (
+            <div className='collection-header'>
+              <h1>Cards Being Sold<br/><h4>Adjust your prices or cancel listings</h4></h1>
+            </div>
+          )}
+          
         </div>
-      </div>
-
-      <div className="add-card-form">
-        <form onSubmit={handleAddCardSubmit}>
-          <label>
-            <input placeholder='Enter Card ID'
-              type="text"
-              value={newCardId}
-              onChange={(e) => setNewCardId(e.target.value)}
-            />
-          </label>
-          <button type="submit">Add Card</button>
-        </form>
-      </div>
-
-
-
+  
+          {displayType === 'collection' ? (
+            // Display the user's card collection
+            <CardListerWindow cards={userCollection} onCardClick={handleCardClick} />
+          ) : (
+            // Display the cards user is currently selling
+            <SellingCardWindow cards={sellingCards} onCardClick={handleCardClick} setSellingCards={setSellingCards} fetchCardsBeingSold={fetchCardsBeingSold}/>
+          )}
+  
+          {/* Render CardListerModal only when displayType is 'collection' */}
+          {displayType === 'collection' && selectedCard && (
+            <div className="for-sale-section">
+              <CardListerModal card={selectedCard} onClose={() => setSelectedCard(null)} />
+            </div>
+          )}
+        </div>
+      
       <Footer />
     </div>
   );

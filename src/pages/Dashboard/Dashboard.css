@@ -3,6 +3,7 @@ body {
   background-color: #112F3B;
   height: 100vh;
   width: 100wh;
+  overflow: scroll;
 }
 
 .dashboard-container {

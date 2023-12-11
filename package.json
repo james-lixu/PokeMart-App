@@ -16,7 +16,8 @@
     "axios": "^1.6.2",
     "bootstrap": "^5.3.2",
     "react-javascript": "file:",
-    "react-router-dom": "^6.18.0"
+    "react-router-dom": "^6.18.0",
+    "styled-components": "^6.1.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",

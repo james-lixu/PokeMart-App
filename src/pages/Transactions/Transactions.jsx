@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import './Transactions.css';
@@ -28,7 +29,7 @@ const Transactions = () => {
     removeFromCart(cardId);
   };
 
-  const handlePurchase = () => {
+  const handlePurchase = async () => {
     console.log('Purchase clicked, process the transaction');
     // Implement purchase functionality
   };

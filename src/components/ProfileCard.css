@@ -1,7 +1,7 @@
 .user-img {
   background-size: cover;
   text-align: center;
-  height: 440px;
+  height: 100%;
   width: auto;
   position: relative;
   display: flex;
@@ -14,7 +14,7 @@
   background-color: rgba(30, 80, 116, .75);
   border-radius: 25px;
   height: 100%;
-  width: 100%;
+  width: 500px;
   padding: 20px;
   display: flex;
   flex-direction: column; 
@@ -39,28 +39,4 @@
 .user-info h2 {
   font-size: 46px; 
   margin-top: 10px; 
-}
-
-.left {
-  height: 60%;
-  width: 35%;
-  z-index: 1;
-  top: 0;
-  float: left;
-  overflow-x: hidden;
-  padding-top: 20px;
-}
-
-.right {
-  height: 60%;
-  width: 65%;
-  z-index: 1;
-  top: 0;
-  float: right;
-  overflow-x: hidden;
-  padding-top: 20px;
-}
-
-.user-cardinfo {
-  background-color: lightcoral;
 }

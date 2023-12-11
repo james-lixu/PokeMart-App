@@ -1,0 +1,43 @@
+.market-listing-card {
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 15px;
+  margin: 5px;
+  width: fit-content;
+  text-align: center;
+  justify-content: center;
+  cursor: pointer;
+  list-style-type: none;
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  background-color: #c32c2c;
+  color: whitesmoke;
+}
+
+.market-listing-card:hover {
+  transform: scale(1.05);
+  background-color: whitesmoke;
+  color: black;
+}
+
+.market-listing-card img {
+  max-width: 60%;
+  height: 70%;
+  justify-content: center;
+  align-content: center;
+  border-radius: 4px;
+}
+
+.market-listing-card h3 {
+  margin: 10px 0;
+  font-size: 1.2em;
+}
+
+.market-listing-card p {
+  font-size: 1em;
+  color: whitesmoke;
+  transition: color 0.3s ease;
+}
+
+.market-listing-card:hover p {
+  color: black;
+}

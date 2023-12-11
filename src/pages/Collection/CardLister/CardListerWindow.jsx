@@ -6,7 +6,7 @@ const CardListerWindow = ({ cards, onCardClick }) => {
   const card_collection = cards.data || [];
 
   return (
-    <div id='card-results'>
+    <div id='collection-card-results'>
       {card_collection.map(card => (
         <CardListerCard key={card.id} card={card} onCardClick={onCardClick} />
       ))}

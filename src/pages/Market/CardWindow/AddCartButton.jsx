@@ -4,11 +4,10 @@ import "./AddCartButton.css";
 import { useCart } from '../../../components/Cart/CartContext';
 
 const AddToCartButton = ({ cardId }) => {
-  const { fetchCartData } = useCart(); // Use fetchCartData from CartProvider
+  const { fetchCartData } = useCart();
 
   const handleAddToCart = async () => {
     try {
-      // Include withCredentials in your Axios requests
       const listingResponse = await axios.post(
         'https://pokemonappbackend.michaelrivera15.repl.co/cart/make_fake_listing',
         { card_id: cardId },
@@ -22,7 +21,7 @@ const AddToCartButton = ({ cardId }) => {
       );
 
       console.log('Card added to cart');
-      await fetchCartData(); // Refresh cart data after adding an item
+      await fetchCartData();
     } catch (error) {
       console.error('Error during add to cart process:', error);
     }

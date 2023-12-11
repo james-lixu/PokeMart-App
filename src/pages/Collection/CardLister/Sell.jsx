@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 const Sell = ({ card }) => {
   const [price, setPrice] = useState('');
+  const [newCardQuality, setNewCardQuality] = useState('');
 
   const handleSellClick = async (e) => {
     e.preventDefault();
@@ -11,19 +12,24 @@ const Sell = ({ card }) => {
       return;
     }
 
+    if (!newCardQuality) {
+      alert('Please select a quality.');
+      return;
+    }
+
     try {
-      const response = await fetch('https://pokemonappbackend.michaelrivera15.repl.co/market/listings/add', {
+      const response = await fetch('https://pokemonappbackend.michaelrivera15.repl.co/market/add', {
         method: 'POST',
         credentials: 'include',
+        mode: 'cors',
         headers: {
           'Content-Type': 'application/json',
         },
-        mode: 'cors',
         body: JSON.stringify({
           card_id: card.id,
-          picture: 'photo',
+          picture: card.small_image_url,
           price: parseFloat(price),
-          quality: 'Mint',
+          quality: newCardQuality,
         }),
       });
 
@@ -39,20 +45,36 @@ const Sell = ({ card }) => {
       // Handle error as needed
     } finally {
       setPrice('');
+      setNewCardQuality('');
     }
   };
 
   return (
-    <div className="sell-card-form">
+    <div className="sell-card-form" style={{float: "left"}}>
       <form onSubmit={handleSellClick}>
         <label>
+          Price: 
           <input placeholder='Enter Price'
             type="text"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
           />
         </label>
-        <button type="submit">Sell Card</button>
+        <label>
+          Quality: 
+          <select
+            value={newCardQuality}
+            onChange={(e) => setNewCardQuality(e.target.value)}
+          >
+            <option value="" disabled>Select Quality</option>
+            <option value="Mint">Mint</option>
+            <option value="Near Mint">Near Mint</option>
+            <option value="Good">Good</option>
+            <option value="Played">Played</option>
+            <option value="Well Played">Well Played</option>
+          </select>
+        </label>
+        <button style={{margin:"10px"}}type="submit">Sell Card</button>
       </form>
     </div>
   );

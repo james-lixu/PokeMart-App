@@ -1,60 +1,83 @@
-.collection-navbar {
-    font-family: Orbitron, sans-serif;
-    background-color: #0A2632 !important;
-}
-
-.collection-navbar.bg-light .nav-link, .collection-navbar.bg-light .collection-navbar-brand {
-    color: #fff !important;
-  background-color: #0A2632 !important;
-}
-
 .collection-container {
   height: 100vh;
   width: 100vw;
   background-size: cover;
   flex-direction: column;
   justify-content: flex-start;
-}
-
-.user-img {
-  background-size: cover;
-  text-align: center;
-  height: 100%;
-  position: relative;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  background-color: #ffffff;
 }
 
-.user-info {
-  color: white;
-  background-color: rgba(30, 80, 116, .75);
-  border-radius: 25px;
-  height: 100%;
-  width: 500px;
-
+.collection-navbar {
+  font-family: 'Orbitron', sans-serif;
+  background-color: #5580e9 !important;
 }
 
-.left{
-  height: 60%;
-  width: 35%;
-  z-index: 1;
-  top: 0;
-  float: left;
-  overflow-x: hidden;
-  padding-top: 20px;
+.collection-navbar.bg-light .nav-link, .collection-navbar.bg-light .collection-navbar-brand {
+  color: #ffffff !important;
+  background-color: #5580e9 !important;
 }
 
-.right{
-  height: 60%;
-  width: 65%;
-  z-index: 1;
-  top: 0;
-  float: right;
-  overflow-x: hidden;
-  padding-top: 20px;
-} 
-
-.user-cardinfo{
-  background-color: lightcoral;
+.collection-header {
+  display: flex;
+  flex: 1;
+  justify-content: space-evenly;
 }
+
+.collection-header div{
+  max-width: 200px;
+  text-align: center;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.collection-content {
+  flex: 1;
+  background-color: #5885AF;
+}
+
+.tab-group{
+  display:flex;
+}
+
+.tab-group img{
+  border-radius: 65px;
+  width: 150px;
+  height: 150px;
+  margin: 20px;
+}
+
+.tab-group button {
+  font-size: 30px;
+  font-weight: 900;
+  padding: 30px 30px;
+  cursor: pointer;
+  position: relative;
+  width: 50%;
+  background: #5885AF;
+  color: #C3E0E5;
+  border: 0;
+  outline: 0;
+  opacity: 0.6;
+  transition: ease opacity 250ms;
+
+  &:before {
+    content: "";
+    position: absolute;
+    bottom: 55px;
+    left: 10%;
+    width: 80%;
+    height: 2px;
+    background: transparent;
+    transition: ease background 250ms;
+  }
+
+  &:hover {
+    opacity: 1;
+
+    &:before {
+      background: black;
+    }
+  }
+}
+
